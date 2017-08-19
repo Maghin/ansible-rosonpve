@@ -1,7 +1,7 @@
-Role Name
+rosonpve
 =========
 
-A brief description of the role goes here.
+Manages RancherOS virtual machine on Proxmox (pve).
 
 Requirements
 ------------
