@@ -1,0 +1,32 @@
+#cloud-config
+ssh_authorized_keys:
+{% for public_key in rosonpve_ssh_authorized_keys %}
+  - {{ public_key }}
+{% endfor %}
+
+hostname: "{{ inventory_hostname }}"
+
+rancher:
+  docker:
+    engine: "{{ rosonpve_docker_version }}"
+    storage_driver: "{{ rosonpve_docker_storage_engine }}"
+
+  network:
+    interfaces:
+      eth1:
+{% if vm_net_address is not defined %}
+        dhcp: true
+{% else %}
+        dhcp: false
+        mtu: 1500
+        address: "{{ vm_net_address }}"
+{% if vm_net_gateway is defined %}
+        gateway: "{{ vm_net_gateway }}"
+{% endif %}
+    dns:
+      nameservers:
+        - "{{ vm_net_dns | default('8.8.8.8') }}"
+      search:
+        - "{{ private_domain_name }}"
+        - "{{ system_domain_name }}"
+{% endif %}
