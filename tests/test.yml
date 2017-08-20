@@ -1,8 +1,27 @@
 ---
 - hosts: rosnode
   gather_facts: false
-  remote_user: root
+  remote_user: rancher
+
+  vars_prompt:
+    - name   : "pve_api_host"
+      prompt : "PVE API host?: "
+      default: "localhost"
+      private: no
+    - name   : "pve_api_user"
+      prompt : "PVE API user?: "
+      default: "root@pam"
+      private: no
+    - name   : "pve_api_password"
+      prompt : "PVE API password?: "
+      private: yes
+    - name   : "rosonpve_vm_pve_node"
+      prompt : "PVE VM node?: "
+      private: no
+
   vars:
-    pve_api_node: "localhost"
+    rosonpve_ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDmri7SRakuhvlUrTCWkJHZcuklL0EKkYlDj0rtbEUf/XflzCBvvK1x1jYmMwX6wHlO4cyofYE6D3TIGEcEuT/yVmQ3zFTA+z8l1gSjO9wyJPYazLYjB0reeI0eqs1i9UCWem14cb0vwFfJQCPbKub0yJunr0+u6GdQvykm0QG1z49QEil68LlCTDHO/6yyTfdAoMKcuvPyhYEUVSc1dQhPjSPDwmByBgvveVcxjHomSRVFeLsIjzZ1IpNsCTNpxu3nHp2d65Ljlq6R0RdUbl/VnYuAxPsjZGE0iHHhHESrwZ9m6eN3jKN/k4bHa93yTEffUbPf+hUo0gNRUdFcEio3SktCeeDkYbywo1k5YKGJRdFR9OOJIPVmXIjwkY+5lMDCET/nZmeQPCqWiGaJ8XUMlwLL+W+icgH3Al16GQiMaXkDilLxTQoK0dyDJsJWcBHBqh79nfV2J9L2VCd3dnSOk2VoL1GKpaWQmwXxVPtWikoXAbHHJIvByKen9eF9ePAtYsMbe2tgIDiknQ6B5iyi4x3u8q/7/Au3aO8zZ0lZlRxw0DofMirIkn0eV+5kq9DjKdpn8Fb62TZQorsQ8dn7bJbG7mQeGx8dfyhMlaRgMv/DxdmTz9us9QdxfILEzOb4L8BwhdyAZEqRzKQmBKRxbsAyk2DemlH3nbShwBLgNQ== maghin@merhylstudio.fr
+
   roles:
     - rosonpve
