@@ -14,19 +14,16 @@ rancher:
   network:
     interfaces:
       eth1:
-{% if vm_net_address is not defined %}
+{% if rosonpve_net_ipv4 is not defined %}
         dhcp: true
 {% else %}
         dhcp: false
         mtu: 1500
-        address: "{{ vm_net_address }}"
-{% if vm_net_gateway is defined %}
-        gateway: "{{ vm_net_gateway }}"
+        address: "{{ rosonpve_net_ipv4 }}"
+{% if rosonpve_net_gateway is defined %}
+        gateway: "{{ rosonpve_net_gateway }}"
 {% endif %}
     dns:
       nameservers:
-        - "{{ vm_net_dns | default('8.8.8.8') }}"
-      search:
-        - "{{ private_domain_name }}"
-        - "{{ system_domain_name }}"
+        - "{{ rosonpve_net_dns | default('8.8.8.8') }}"
 {% endif %}
