@@ -1,0 +1,24 @@
+---
+# Build config drive for a CoreOS-like system on Proxmox
+
+- name: Ensure pve node have genisoimage (eq. mkisofs)
+  apt:
+    pkg: genisoimage
+    state: present
+  run_once: true
+
+- name: Ensure openstack folder exist
+  file:
+    path: "{{ pve_userdata_path }}/ros-config/{{ inventory_hostname }}/config-drive/openstack/latest"
+    state: directory
+
+- template:
+    src: "cloud-config.yml.j2"
+    dest: "{{ pve_userdata_path }}/ros-config/{{ inventory_hostname }}/config-drive/openstack/latest/user_data"
+  register: configdrive_result
+
+- name: Build iso for config drive
+  command: genisoimage -R -V config-2 -o
+           {{ pve_iso_path }}/configdrive-{{ inventory_hostname }}.iso
+           {{ pve_userdata_path }}/ros-config/{{ inventory_hostname }}/config-drive
+  when: configdrive_result | changed

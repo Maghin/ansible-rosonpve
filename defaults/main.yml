@@ -1,2 +1,27 @@
 ---
 # defaults file for rosonpve
+
+pve_api_host:
+pve_api_user:
+pve_api_pass: ""
+
+rosonpve_ssh_authorized_keys: []
+rosonpve_docker_version: "docker-1.10.3"
+rosonpve_docker_storage_engine: "overlay2"
+
+# defaults network parameters
+rosonpve_net_dhcp   : true
+
+# defaults vm parameters
+rosonpve_vm_pve_node: ""
+rosonpve_vm_name    : "{{ inventory_hostname }}"
+rosonpve_vm_cores   : "1"
+rosonpve_vm_memory  : "2048"
+rosonpve_vm_disksize: "16"
+rosonpve_vm_vga     : "qxl"
+rosonpve_vm_bridge  : "vmbr0"
+rosonpve_vm_storage : "local-lvm"
+
+# defaults for external vars
+pve_iso_path: "/var/lib/vz/template/iso"
+pve_userdata_dir: "/data"

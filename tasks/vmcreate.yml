@@ -1,0 +1,52 @@
+---
+#
+
+- name: Create VM
+  proxmox_kvm:
+    api_host    : "{{ pve_api_host }}"
+    api_user    : "{{ pve_api_user }}"
+    api_password: "{{ pve_api_pass }}"
+    node        : "{{ rosonpve_vm_pve_node }}"
+    name        : "{{ rosonpve_vm_name }}"
+    net         : "{'net0':'virtio,bridge={{ rosonpve_vm_bridge }}'}"
+    virtio      : "{'virtio0':'local:{{ rosonpve_vm_disksize }},format=raw'}"
+    ide         : "{'ide2':'local:iso/{{ rosonpve_vm_iso }},media=cdrom',
+                    'ide3':'local:iso/configdrive-{{ inventory_hostname }}.iso'}"
+    cores       : "{{ rosonpve_vm_cores }}"
+    memory      : "{{ rosonpve_vm_memory }}"
+    storage     : "{{ rosonpve_vm_storage }}"
+    vga         : "{{ rosonpve_vm_vga }}"
+    balloon     : 0
+    ostype      : l26
+    state: present
+  register: vmcreate_result
+
+- name: Waiting 10s...
+  pause:
+    seconds: 10
+  when: vmcreate_result | changed
+
+- name: Start VM
+  proxmox_kvm:
+    api_host    : "{{ pve_api_host }}"
+    api_user    : "{{ pve_api_user }}"
+    api_password: "{{ pve_api_pass }}"
+    node        : "{{ rosonpve_vm_pve_node }}"
+    name        : "{{ rosonpve_vm_name }}"
+    state: started
+  register: vmstart_result
+
+- name: Waiting 5s...
+  pause:
+    seconds: 5
+  when: vmstart_result | changed
+
+- name: Get VM State
+  proxmox_kvm:
+    api_host    : "{{ pve_api_host }}"
+    api_user    : "{{ pve_api_user }}"
+    api_password: "{{ pve_api_pass }}"
+    node        : "{{ rosonpve_vm_pve_node }}"
+    name        : "{{ rosonpve_vm_name }}"
+    state: current
+  register: vmstate_result
