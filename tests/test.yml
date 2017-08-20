@@ -1,5 +1,8 @@
 ---
-- hosts: localhost
+- hosts: rosnode
+  gather_facts: false
   remote_user: root
+  vars:
+    pve_api_node: "localhost"
   roles:
     - rosonpve
