@@ -1,16 +1,13 @@
 ---
 # defaults file for rosonpve
 
-pve_api_host:
-pve_api_user:
+pve_api_host: ""
+pve_api_user: ""
 pve_api_pass: ""
 
 rosonpve_ssh_authorized_keys: []
 rosonpve_docker_version: "docker-1.10.3"
 rosonpve_docker_storage_engine: "overlay2"
-
-# defaults network parameters
-rosonpve_net_dhcp   : true
 
 # defaults vm parameters
 rosonpve_vm_pve_node: ""

@@ -1,21 +1,13 @@
 ---
 # tasks file for rosonpve
 
-- name: Random port number
-    set_fact:
-      port_number: "{{ 65000 |random(start=32000) }}"
-
 - name: Build configdrive
   include: build_configdrive.yml
   delegate_to: "{{ rosonpve_vm_pve_node }}"
 
 - name: Deploy VM
   include: vmcreate.yml
-  delegate_to: localhost
-
-- name: Set VMID
-  set_fact:
-    vmid: "{{ vmstate_result.msg | regex_replace('^.* = (\\d+).*?$', '\\1') }}"
+  delegate_to: "{{ rosonpve_vm_pve_node }}"
 
 - name: Wait for deployment to be finished
   wait_for_connection:
