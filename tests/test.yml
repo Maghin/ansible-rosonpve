@@ -14,23 +14,14 @@
     - name   : "pve_api_password"
       prompt : "PVE API pass?: "
       private: yes
-    - name   : "rosonpve_vm_pve_node"
-      prompt : "VM PVE node?: "
-      private: no
-    - name   : "rosonpve_net_ipv4"
-      prompt : "VM IPv4?: "
-      private: no
-    - name   : "rosonpve_net_gateway"
-      prompt : "VM GateWay?: "
-      private: no
-    - name   : "rosonpve_net_dns"
-      prompt : "VM DNS?: "
-      default: "{{ rosonpve_net_gateway }}"
-      private: no
 
   vars:
     rosonpve_ssh_authorized_keys:
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDmri7SRakuhvlUrTCWkJHZcuklL0EKkYlDj0rtbEUf/XflzCBvvK1x1jYmMwX6wHlO4cyofYE6D3TIGEcEuT/yVmQ3zFTA+z8l1gSjO9wyJPYazLYjB0reeI0eqs1i9UCWem14cb0vwFfJQCPbKub0yJunr0+u6GdQvykm0QG1z49QEil68LlCTDHO/6yyTfdAoMKcuvPyhYEUVSc1dQhPjSPDwmByBgvveVcxjHomSRVFeLsIjzZ1IpNsCTNpxu3nHp2d65Ljlq6R0RdUbl/VnYuAxPsjZGE0iHHhHESrwZ9m6eN3jKN/k4bHa93yTEffUbPf+hUo0gNRUdFcEio3SktCeeDkYbywo1k5YKGJRdFR9OOJIPVmXIjwkY+5lMDCET/nZmeQPCqWiGaJ8XUMlwLL+W+icgH3Al16GQiMaXkDilLxTQoK0dyDJsJWcBHBqh79nfV2J9L2VCd3dnSOk2VoL1GKpaWQmwXxVPtWikoXAbHHJIvByKen9eF9ePAtYsMbe2tgIDiknQ6B5iyi4x3u8q/7/Au3aO8zZ0lZlRxw0DofMirIkn0eV+5kq9DjKdpn8Fb62TZQorsQ8dn7bJbG7mQeGx8dfyhMlaRgMv/DxdmTz9us9QdxfILEzOb4L8BwhdyAZEqRzKQmBKRxbsAyk2DemlH3nbShwBLgNQ== maghin@merhylstudio.fr
-
+    rosonpve_vm_pve_node: "my-node"
+    rosonpve_net_ipv4: "10.0.0.11/24"
+    rosonpve_net_gateway: "10.0.0.1"
+    rosonpve_net_dns: "10.0.0.1"
+    rosonpve_vm_bridge: "vmbr1"
   roles:
     - rosonpve
