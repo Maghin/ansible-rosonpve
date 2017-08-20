@@ -16,7 +16,17 @@
       prompt : "PVE API password?: "
       private: yes
     - name   : "rosonpve_vm_pve_node"
-      prompt : "PVE VM node?: "
+      prompt : "VM PVE node?: "
+      private: no
+    - name   : "rosonpve_net_ipv4"
+      prompt : "VM IPv4?: "
+      private: no
+    - name   : "rosonpve_net_gateway"
+      prompt : "VM GateWay?: "
+      private: no
+    - name   : "rosonpve_net_dns"
+      prompt : "VM DNS?: "
+      default: "{{ rosonpve_net_gateway }}"
       private: no
 
   vars:
