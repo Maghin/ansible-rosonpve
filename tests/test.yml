@@ -12,7 +12,7 @@
       default: "root@pam"
       private: no
     - name   : "pve_api_password"
-      prompt : "PVE API password?: "
+      prompt : "PVE API pass?: "
       private: yes
     - name   : "rosonpve_vm_pve_node"
       prompt : "VM PVE node?: "
