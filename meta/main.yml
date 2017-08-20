@@ -4,16 +4,6 @@ galaxy_info:
   company: MerhylStudio
   license: MIT
   min_ansible_version: 1.9
-  platforms:
-  - name: Debian
-    versions:
-    - 9
-    - 8
-    - 7
-  - name: Proxmox
-    versions:
-    - 5
-    - 4
 
   galaxy_tags: []
 
