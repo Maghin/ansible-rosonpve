@@ -17,4 +17,4 @@ rosonpve_vm_storage : "local-lvm"
 
 # defaults for external vars
 pve_iso_path: "/var/lib/vz/template/iso"
-pve_userdata_dir: "/data"
+pve_userdata_path: "/data"
