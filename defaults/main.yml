@@ -13,7 +13,8 @@ rosonpve_vm_memory  : "2048"
 rosonpve_vm_disksize: "16"
 rosonpve_vm_vga     : "qxl"
 rosonpve_vm_bridge  : "vmbr0"
-rosonpve_vm_storage : "local-lvm"
+rosonpve_vm_storage : "local"
+rosonpve_vm_iso     : "local:iso/rancheros-v1.0.2.iso"
 
 # defaults for external vars
 pve_iso_path: "/var/lib/vz/template/iso"

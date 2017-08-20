@@ -10,7 +10,7 @@
     name        : "{{ rosonpve_vm_name }}"
     net         : "{'net0':'virtio,bridge={{ rosonpve_vm_bridge }}'}"
     virtio      : "{'virtio0':'local:{{ rosonpve_vm_disksize }},format=raw'}"
-    ide         : "{'ide2':'local:iso/{{ rosonpve_vm_iso }},media=cdrom',
+    ide         : "{'ide2':'{{ rosonpve_vm_iso }},media=cdrom',
                     'ide3':'local:iso/configdrive-{{ inventory_hostname }}.iso'}"
     cores       : "{{ rosonpve_vm_cores }}"
     memory      : "{{ rosonpve_vm_memory }}"
