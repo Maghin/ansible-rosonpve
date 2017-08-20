@@ -1,7 +1,6 @@
 ---
 - hosts: rosnode
   gather_facts: false
-  remote_user: rancher
 
   vars_prompt:
     - name   : "pve_api_host"

@@ -10,6 +10,7 @@
   delegate_to: "{{ rosonpve_vm_pve_node }}"
 
 - name: Wait for deployment to be finished
+  remote_user: rancher
   wait_for_connection:
     delay: 10
     timeout: 1200
