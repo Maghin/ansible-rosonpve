@@ -6,8 +6,7 @@
   delegate_to: "{{ rosonpve_vm_pve_node }}"
 
 - name: Deploy VM
-  include: vmcreate.yml  
-  run_once: true
+  include: vmcreate.yml
   with_items: "{{ play_hosts }}"
   when: "hostvars[item].inventory_hostname == inventory_hostname"
   delegate_to: "{{ rosonpve_vm_pve_node }}"
@@ -16,4 +15,4 @@
   remote_user: rancher
   wait_for_connection:
     delay: 10
-    timeout: 1200
+    timeout: 120
