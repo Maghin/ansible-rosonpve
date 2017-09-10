@@ -7,6 +7,7 @@
 
 - name: Deploy VM
   include: vmcreate.yml
+  serial: "1"
   delegate_to: "{{ rosonpve_vm_pve_node }}"
 
 - name: Wait for deployment to be finished
