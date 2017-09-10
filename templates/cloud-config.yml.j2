@@ -13,7 +13,7 @@ rancher:
 
   network:
     interfaces:
-      eth1:
+      "{{ rosonpve_vm_net }}:
 {% if rosonpve_net_ipv4 is not defined %}
         dhcp: true
 {% else %}
