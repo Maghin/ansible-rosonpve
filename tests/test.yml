@@ -11,8 +11,8 @@
       prompt : "PVE API user?: "
       default: "root@pam"
       private: no
-    - name   : "pve_api_password"
-      prompt : "PVE API pass?: "
+    - name   : "pve_api_pass"
+      prompt : "PVE API password?: "
       private: yes
 
   vars:
