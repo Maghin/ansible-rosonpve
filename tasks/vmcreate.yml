@@ -8,6 +8,7 @@
     api_password: "{{ pve_api_pass }}"
     node        : "{{ rosonpve_vm_pve_node }}"
     name        : "{{ rosonpve_vm_name }}"
+    vmid        : "{{ rosonpve_vm_id }}"
     net         : "{'net0':'virtio,bridge={{ rosonpve_vm_bridge }}'}"
     virtio      : "{'virtio0':'local:{{ rosonpve_vm_disksize }},format=raw'}"
     ide         : "{'ide2':'{{ rosonpve_vm_iso }},media=cdrom',

@@ -8,6 +8,7 @@ rosonpve_docker_storage_engine: "overlay2"
 # defaults vm parameters
 rosonpve_vm_pve_node: ""
 rosonpve_vm_name    : "{{ inventory_hostname }}"
+rosonpve_vm_id      : "101"
 rosonpve_vm_cores   : "1"
 rosonpve_vm_memory  : "2048"
 rosonpve_vm_disksize: "16"
