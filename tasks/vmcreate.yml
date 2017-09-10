@@ -22,9 +22,9 @@
     state: present
   register: vmcreate_result
 
-- name: Waiting 10s...
+- name: Waiting 20s...
   pause:
-    seconds: 10
+    seconds: 20
   when: vmcreate_result | changed
 
 - name: Start VM
