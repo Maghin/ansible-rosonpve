@@ -6,8 +6,10 @@
   delegate_to: "{{ rosonpve_vm_pve_node }}"
 
 - name: Deploy VM
-  include: vmcreate.yml
-  serial: "1"
+  include: vmcreate.yml  
+  run_once: true
+  with_items: "{{ play_hosts }}"
+  when: "hostvars[item].inventory_hostname == inventory_hostname"
   delegate_to: "{{ rosonpve_vm_pve_node }}"
 
 - name: Wait for deployment to be finished
